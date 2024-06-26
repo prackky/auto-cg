@@ -52,13 +52,13 @@ def print_cg(slit, df, finy: int):
             slit.header('Sold')
             slit.dataframe(ss)
 
-    # lt = df[((df['Date Diff'] >= 365) & (df['Category'] == 'Equity')) | ((df['Date Diff'] >= 365 * 3) & (df['Category'].str.contains('Debt')))]
-    lt = df[(df['Date Diff'] >= 365)]
+    lt = df[((df['Date Diff'] >= 365) & (df['Category'] == 'Equity')) | ((df['Date Diff'] >= 365 * 3) & (df['Category'].str.contains('Debt')))]
+    # lt = df[(df['Date Diff'] >= 365)]
     # not handling intraday, since they will be calculated under business or salary income.
     buy = lt['Buy value'].sum().round(2)
     sell = lt['Sell value'].sum().round(2)
     lpl = sell - buy
-    # STCG calculation:
+    # LTCG calculation:
     with c2:
         slit.subheader('Long term Capital Gain[LTCG]')
         slit.write('For FY : ', fy)
