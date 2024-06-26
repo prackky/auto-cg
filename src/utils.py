@@ -34,12 +34,12 @@ def print_cg(slit, df, finy: int):
     # not handling intraday, since they will be calculated under business or salary income.
     buy = st['Buy value'].sum().round(2)
     sell = st['Sell value'].sum().round(2)
-    pl = sell - buy
+    spl = sell - buy
     # STCG calculation:
     with c1:
         slit.subheader('Short term Capital Gain[STCG]')
         slit.write('For FY : ', fy)
-        slit.write('Bought Value = ', buy, ' Sell Value = ', sell, ' STCG = ', pl.round(2))
+        slit.write('Bought Value = ', buy, ' Sell Value = ', sell, ' STCG = ', spl.round(2))
         ss = st.groupby(['Sell Quarter'])[['Sell value', 'pnl']].sum()
         bs = st.groupby(['Buy Quarter'])[['Buy value']].sum()
         # print(a, '\n',b)
@@ -57,12 +57,12 @@ def print_cg(slit, df, finy: int):
     # not handling intraday, since they will be calculated under business or salary income.
     buy = lt['Buy value'].sum().round(2)
     sell = lt['Sell value'].sum().round(2)
-    pl = sell - buy
+    lpl = sell - buy
     # STCG calculation:
     with c2:
         slit.subheader('Long term Capital Gain[LTCG]')
         slit.write('For FY : ', fy)
-        slit.write('Bought Value = ', buy, ' Sell Value = ', sell, ' STCG = ', pl.round(2))
+        slit.write('Bought Value = ', buy, ' Sell Value = ', sell, ' LTCG = ', lpl.round(2))
         ls = lt.groupby(['Sell Quarter'])[['Sell value', 'pnl']].sum()
         lb = lt.groupby(['Buy Quarter'])[['Buy value']].sum()
         # print(a, '\n',b)
