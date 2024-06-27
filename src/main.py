@@ -46,7 +46,7 @@ with c2:
 slit.caption("""Disclosure:
 1. Calculations are for educational purpose only, please get in touch with a professional CA for tax filing.
 2. Uploaded files are parsed and processed on the fly, we do not store them anywhere.
-3. For Debt funds we consider **[CG > 3 years = LTCG]**, so if you have bought Debt funds before 31-Mar-2024, correct CG manually.
+3. For Debt Mutual funds we consider **[CG > 3 years = LTCG]**, so if you have bought Debt funds before 01-Apr-2023, correct CG manually.
 4. Currently, we support Capital Gains excel from **Zerodha & Groww** only, more powers will be added soon.
 """)
 
