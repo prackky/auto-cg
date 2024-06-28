@@ -3,6 +3,7 @@ from groww import *
 
 from utils import print_cg
 from zerodha import *
+from samco import *
 
 
 slit.set_page_config(page_title="Capital Gains", layout="wide")
@@ -20,7 +21,7 @@ fy = number
 df = pd.DataFrame()
 
 # process_file method only returns dataframe only if it matches any of the broker pattern, else fails
-@slit.cache_data
+# @slit.cache_data
 def process_file(file):
     try:
         return standardize_groww_mf(file, fy)
@@ -37,6 +38,11 @@ def process_file(file):
     except Exception as e:
         print(e)
 
+    try:
+        return standardize_samco_eq(file, fy)
+    except Exception as e:
+        print(e)
+
     slit.write("filename: ", uploaded_file.name, " is not supported right now.")
 
 
@@ -47,7 +53,7 @@ slit.caption("""Disclosure:
 1. Calculations are for educational purpose only, please get in touch with a professional CA for tax filing.
 2. Uploaded files are parsed and processed on the fly, we do not store them anywhere.
 3. For Debt Mutual funds we consider **[CG > 3 years = LTCG]**, so if you have bought Debt funds before 01-Apr-2023, correct CG manually.
-4. Currently, we support Capital Gains excel from **Zerodha & Groww** only, more powers will be added soon.
+4. Currently, we support Capital Gains excel from **Zerodha, Groww and Samco** only, more powers will be added soon.
 """)
 
 for uploaded_file in uploaded_files:

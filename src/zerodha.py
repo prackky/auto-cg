@@ -18,7 +18,7 @@ def standardize_zerodha(fp, fy: int):
     # print("\nRows that contain all required columns:")
     # print(rows_with_columns)
 
-    if (rows_with_columns):
+    if rows_with_columns:
         rows_with_columns.append(len(dataframe) - 1)
         # print(rows_with_columns)
         for i in range(3):
@@ -27,7 +27,7 @@ def standardize_zerodha(fp, fy: int):
             category = 'Equity' if 'Equity' in category else category
             for j in range(rows_with_columns[i] + 1, rows_with_columns[i + 1] - 4):
                 # print(rows_with_columns[i], ' - ', rows_with_columns[i+1] - 4, ' and j = ', j)
-                if ((str(dataframe.iloc[j][1]) != '') & (str(dataframe.iloc[j][1]) != 'Symbol')):
+                if (str(dataframe.iloc[j][1]) != '') & (str(dataframe.iloc[j][1]) != 'Symbol'):
                     dataframe['Category'] = str(category)
                     # print(dataframe.iloc[j])
                     df[i] = df[i]._append(dataframe.iloc[j][1:])
