@@ -30,7 +30,7 @@ def print_cg(slit, df, finy: int):
     df['Date Diff'] = (df['Sell date'] - df['Buy date']).dt.days
 
     c1, c2 = slit.columns(2, gap="medium", vertical_alignment="top")
-    st = df.query('`Date Diff` < 365')
+    st = df.query('`Date Diff` < 365 and `Date Diff` > 0')
     # not handling intraday, since they will be calculated under business or salary income.
     buy = st['Buy value'].sum().round(2)
     sell = st['Sell value'].sum().round(2)

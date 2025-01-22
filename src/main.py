@@ -12,7 +12,7 @@ slit.header('Capital Gains Auto Calculator')
 # FY and File upload displayed in 2 columns
 c1, c2 = slit.columns(2, gap="medium", vertical_alignment="top")
 with c1:
-    number = slit.number_input("Financial Year:", 2024, 2024)
+    number = slit.number_input("Financial Year:", 2024, 2025)
 
 # initiate financial year for taxation
 fy = number
