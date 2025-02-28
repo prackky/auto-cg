@@ -30,7 +30,7 @@ def print_cg(slit, df, finy: int):
     df['Date Diff'] = (df['Sell date'] - df['Buy date']).dt.days
 
     c1, c2 = slit.columns(2, gap="medium", vertical_alignment="top")
-    st = df.query('`Date Diff` < 365 and `Date Diff` > 0')
+    st = df.query('`Date Diff` < 365 and `Date Diff` > 0 and `Category`.str.contains("Debt")')
     # not handling intraday, since they will be calculated under business or salary income.
     buy = st['Buy value'].sum().round(2)
     sell = st['Sell value'].sum().round(2)
@@ -53,8 +53,7 @@ def print_cg(slit, df, finy: int):
             slit.dataframe(ss)
 
     lt = df[((df['Date Diff'] >= 365) &
-             (df['Category'].str.contains('Equity') & (df['Category'].str.contains('Debt') == False)))
-            | ((df['Date Diff'] >= 365 * 3) & (df['Category'].str.contains('Debt')))]
+             (df['Category'].str.contains('Equity') & (df['Category'].str.contains('Debt') == False)))]
     # lt = df[(df['Date Diff'] >= 365)]
     # not handling intraday, since they will be calculated under business or salary income.
     buy = lt['Buy value'].sum().round(2)
